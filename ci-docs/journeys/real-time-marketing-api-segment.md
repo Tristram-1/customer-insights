@@ -34,8 +34,6 @@ The <**Organization URL**> part should be replaced with the actual URL of the or
     msdynmkt_excludedmembers: string,
     msdynmkt_disablesegmentrefresh: boolean,
     msdynmkt_segmentrefreshintervalminutes: number
-    msdynmkt_sourcesegmentcreatedon: date
-    msdynmkt_sourcesegmentcreatedby: string
 }
 ```
 
@@ -56,8 +54,6 @@ The payload contains the following properties:
 - **msdynmkt_excludedmembers**: A string that contains a list of GUIDs of members that should be excluded from the segment.
 - **msdynmkt_disablesegmentrefresh**: A boolean value that indicates whether automatic segment refreshing should be disabled.
 - **msdynmkt_segmentrefreshintervalminutes**: An integer value that specifies the refresh interval in minutes.
-- **msdynmkt_sourcesegmentcreatedon**: A date field to describe the date of segment creation.
-- **msdynmkt_sourcesegmentcreatedby** : A string field to describe the creator of the segment.
 
 > [!Note]
 > Adding the `msdynmkt_sourcesegmentcreatedon` and `msdynmkt_sourcesegmentcreatedby` fields isn't mandatory. The segment still works without these fields, but the two fields won't populate if not added to the payload.
@@ -116,7 +112,9 @@ The URL for the POST request is `<Organization URL>/api/data/v9.0/msdynmkt_segme
     "statecode": number,
     "statuscode": number,
     "msdynmkt_sourcesegmentuid": string,
-    "owningbusinessunit@odata.bind": string
+    "owningbusinessunit@odata.bind": string,
+    "msdynmkt_sourcesegmentcreatedon": date,
+    "msdynmkt_sourcesegmentcreatedby": string
 }
 ```
 
@@ -142,6 +140,8 @@ The properties included in the payload are:
     - 5 = Exporting (if the segment definition is in Publishing state)
 - **msdynmkt_sourcesegmentuid**: A string that represents the unique identifier of the segment that the current segment is based on.
 - **owningbusinessunit@odata.bind**: (Optional) A string that represents the reference to the business unit that owns the segment.
+- **msdynmkt_sourcesegmentcreatedon**: A date field to describe the date of segment creation.
+- **msdynmkt_sourcesegmentcreatedby**: A string field to describe the creator of the segment.
 
 ### Example request
 
